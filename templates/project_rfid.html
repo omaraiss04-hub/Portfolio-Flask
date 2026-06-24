@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt: Smart RFID Door Lock | Omar Aissaoui</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-detail-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+        .tech-badge {
+            display: inline-block;
+            background: #2d3748;
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin: 5px;
+            font-weight: 500;
+        }
+        .project-header {
+            margin-bottom: 40px;
+        }
+        .project-header h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        /* تنسيق مشغل الفيديو المتناسق مع الثيم المظلم */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #2d3748;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin: 30px 0;
+            background: #000;
+        }
+        video {
+            width: 100%;
+            display: block;
+        }
+        .component-list {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        .component-list li {
+            margin-bottom: 12px;
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+<body style="display: block;">
+
+    <div class="project-detail-container">
+        <a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Zurück zum Portfolio</a>
+
+        <header class="project-header">
+            <span>Embedded Systems / IoT</span>
+            <h1>Smart RFID Door Lock</h1>
+            <div>
+                <span class="tech-badge">Arduino UNO R3</span>
+                <span class="tech-badge">RC522 RFID</span>
+                <span class="tech-badge">C++ / Wiring</span>
+                <span class="tech-badge">Servomotor</span>
+                <span class="tech-badge">Embedded Security</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="card" style="margin-bottom: 30px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-circle-play"></i> Video-Demonstration</h3>
+                <p>Sehen Sie das intelligente Türschloss in Aktion. Das System validiert den RFID-Tag in Echtzeit und steuert den Servomotor an:</p>
+                
+                <div class="video-wrapper">
+    <video controls preload="metadata">
+        <source src="{{ url_for('static', filename='WhatsApp Video 2026-06-06 at 17.43.34.mp4') }}" type="video/mp4">
+        Ihr Browser unterstützt das Video-Tag nicht.
+    </video>
+</div>
+            </section>
+
+            <section class="card" style="margin-bottom: 30px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-book-open"></i> Projekt-Blog & Funktionsweise</h3>
+                <p>Dieses Projekt kombiniert Hardware-Interaktion mit eingebetteter Logik. Das Ziel war die Entwicklung eines Prototyps für ein sicheres, schlüsselloses Zugangssystem, wie es in modernen Smart Homes oder Sicherheitsbereichen eingesetzt wird.</p>
+                <br>
+                <h4 style="color: #fff; margin-bottom: 10px;">Wie funktioniert das System?</h4>
+                <p>Das RC522-Modul sendet kontinuierlich ein elektromagnetisches Feld aus. Sobald ein RFID-Transponder (Karte oder Schlüsselanhänger) in die Nähe gebracht wird, liest das Modul dessen eindeutige UID (Unique Identifier) aus und leitet sie über die SPI-Schnittstelle an den Arduino weiter.</p>
+                <p>Der Arduino gleicht diese UID mit den im Code hinterlegten autorisierten IDs ab. Bei Übereinstimmung schaltet das System auf "Zugriff gewährt" (Access Granted) und dreht den Servomotor um 90 Grad, um das Schloss physisch zu öffnen.</p>
+            </section>
+
+            <section class="card">
+                <h3 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-layer-group"></i> Hardware-Komponenten</h3>
+                <ul class="component-list">
+                    <li><strong>Microcontroller:</strong> Arduino UNO R3 (Verarbeitung der Logik).</li>
+                    <li><strong>RFID-Lesegerät:</strong> MFRC522 (Frequenz 13.56 MHz) zur drahtlosen Kommunikation.</li>
+                    <li><strong>Aktuator:</strong> SG90 Micro Servomotor zur Simulation des Verriegelungsmechanismus.</li>
+                    <li><strong>Signalisierung:</strong> LEDs (Grün für Erfolg, Rot für Zugriff verweigert) & ein Piezo-Summer für akustisches Feedback.</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

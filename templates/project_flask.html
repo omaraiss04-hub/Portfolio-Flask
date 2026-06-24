@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt: Flask Portfolio Backend | Omar Aissaoui</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* تنسيقات إضافية مخصصة لصفحة تفاصيل المشروع */
+        .project-detail-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+        .tech-badge {
+            display: inline-block;
+            background: #2d3748;
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin: 5px;
+            font-weight: 500;
+        }
+        .project-header {
+            margin-bottom: 40px;
+        }
+        .project-header h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .feature-list {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        .feature-list li {
+            margin-bottom: 12px;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body style="display: block;"> <div class="project-detail-container">
+        <a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Zurück zum Portfolio</a>
+
+        <header class="project-header">
+            <span>Projekt-Details</span>
+            <h1>Flask Portfolio Backend</h1>
+            <div style="margin-top: 10px;">
+                <span class="tech-badge">Python 3.13</span>
+                <span class="tech-badge">Flask Framework</span>
+                <span class="tech-badge">REST-API</span>
+                <span class="tech-badge">Asynchronous (AJAX)</span>
+                <span class="tech-badge">JSON</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="card" style="margin-bottom: 30px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-file-lines"></i> Projektbeschreibung</h3>
+                <p>Dieses Projekt bildet (das Rückgrat) für mein digitales Portfolio. Es handelt sich um ein leichtgewichtiges, aber hochperformantes Backend, das auf dem Python-Flask-Framework basiert. Das Hauptziel war es, eine moderne Architektur zu schaffen, die Benutzeranfragen blitzschnell und ohne spürbare Verzögerung verarbeitet.</p>
+            </section>
+
+            <section class="card" style="margin-bottom: 30px;">
+                <h3 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-gear"></i> Technische Kernfunktionen</h3>
+                <ul class="feature-list">
+                    <li><strong>Asynchrones Kontaktformular:</strong> Durch den Einsatz der JavaScript <code>Fetch API</code> werden Formulardaten im JSON-Format an das Backend gesendet, ohne dass die gesamte Webseite neu geladen werden muss (No-Page-Reload).</li>
+                    <li><strong>Echtzeit-Terminal-Logging:</strong> Eingehende Nachrichten werden strukturiert und formatiert direkt im VS Code Terminal ausgegeben, was ein optimales Live-Monitoring ermöglicht.</li>
+                    <li><strong>Robuste Datenvalidierung:</strong> Das Flask-Backend prüft jede Anfrage serverseitig auf Vollständigkeit (Schutz vor leeren oder fehlerhaften Datensätzen) und antwortet mit standardisierten HTTP-Statuscodes (z. B. <code>400 Bad Request</code> oder <code>200 OK</code>).</li>
+                    <li><strong>Modularer Code:</strong> Die Ordnerstruktur trennt strikt zwischen Logik (Python), Präsentation (HTML/Templates) und statischen Assets (CSS/Bilder).</li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <h3 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fa-solid fa-code"></i> REST-API Endpunkt (Vorschau)</h3>
+                <p>Der zentrale API-Endpunkt nimmt <code>POST</code>-Anfragen entgegen und verarbeitet diese asynchron:</p>
+                <pre style="background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #a3ecec; font-family: monospace; margin-top: 15px; border: 1px solid #2d3748;">
+@app.route('/send_message', methods=['POST'])
+def send_message():
+    data = request.json
+    # Server-side Validation & Terminal Output...
+    return jsonify({"status": "success"})</pre>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
