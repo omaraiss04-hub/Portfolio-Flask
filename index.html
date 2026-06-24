@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Digitales Portfolio | Omar Aissaoui</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="profile-info">
+            <div class="avatar">
+                <img src="{{ url_for('static', filename='DSC_6914 -.jpg') }}" alt="Omar Aissaoui">
+            </div>
+            <h2>Omar Aissaoui</h2>
+            <p class="subtitle">Elektroniker & IT-Nerd</p>
+        </div>
+
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#home" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#about"><i class="fa-solid fa-user"></i> Über mich</a></li>
+                <li><a href="#skills"><i class="fa-solid fa-code"></i> Skills</a></li>
+                <li><a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projekte</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>© 2026 Omar Aissaoui</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        
+        <section id="home" class="section hero-section">
+            <div class="hero-text">
+                <span>Willkommen auf meinem Portfolio</span>
+                <h1>Hallo, ich bin <span id="typing-text" class="highlight"></span><span class="cursor">|</span></h1>
+                <p>Techniker für Energie- und Gebäudetechnik, Automatisierung und Webentwicklung.</p>
+                <a href="#contact" class="btn-primary">Kontaktieren Sie mich</a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title">Über mich</h2>
+            <div class="card">
+                <p>Ich bin ein leidenschaftlicher Techniker und Elektroniker mit einer großen Affinität zur IT und Softwareentwicklung. Es fasziniert mich, Hardware und Software miteinander zu verbinden – sei es durch die Programmierung von Mikrocontrollern oder das Erstellen moderner Webanwendungen.</p>
+                <p>Mit fundierten Kenntnissen in der Elektroinstallation, Photovoltaik und Automatisierungstechnik suche ich immer nach neuen Herausforderungen, um innovative Systeme zu entwickeln und zu optimieren.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-bolt"></i> Elektrotechnik</h3>
+                    <ul>
+                        <li>Elektroinstallation & Gebäudeautomation</li>
+                        <li>Photovoltaik-Systeme (Solar)</li>
+                        <li>Elektronikreparatur & Mikrolöten</li>
+                        <li>Automatisierung</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-laptop-code"></i> IT & Software</h3>
+                    <ul>
+                        <li>Python Development & Flask Async Backend</li>
+                        <li>Frontend (HTML5, CSS3, JavaScript ES6)</li>
+                        <li>Ubuntu Linux & Git Version Control</li>
+                        <li>Arduino Prototyping & Sensorik</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title">Projekte</h2>
+            <div class="projects-grid">
+               <a href="{{ url_for('rfid_project_detail') }}" class="project-card-link">
+    <div class="project-card">
+        <div class="project-icon"><i class="fa-solid fa-microchip"></i></div>
+        <h3>Smart RFID Door Lock</h3>
+        <p>Ein intelligentes Türschloss-System basierend auf Arduino UNO R3, RC522 RFID-Modul und einem Servomotor zur sicheren Zugangskontrolle.</p>
+        <span class="read-more">Mehr anzeigen <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+</a>
+                <a href="{{ url_for('flask_project_detail') }}" class="project-card-link">
+    <div class="project-card">
+        <div class="project-icon"><i class="fa-brands fa-python"></i></div>
+        <h3>Flask Portfolio Backend</h3>
+        <p>Entwicklung dieses Web-Portfolios mit einem Python Backend zur asynchronen Verarbeitung von Kontaktanfragen über eine REST-API.</p>
+        <span class="read-more">Mehr anzeigen <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Kontakt</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p><i class="fa-solid fa-location-dot"></i> Oujda, Marokko</p>
+                    <p><i class="fa-solid fa-envelope"></i> omaraiss04@gmail.com</p>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Ihr Name" required>
+                    <input type="email" placeholder="Ihre E-Mail" required>
+                    <textarea placeholder="Ihre Nachricht" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Nachricht senden</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 1. Smooth Scrollspy Effect
+        window.addEventListener('scroll', () => {
+            let sections = document.querySelectorAll('.section');
+            let navLinks = document.querySelectorAll('.nav-menu ul li a');
+            let top = window.scrollY;
+
+            sections.forEach(sec => {
+                let offset = sec.offsetTop - 160;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+                
+                if(top >= offset && top < offset + height) {
+                    navLinks.forEach(links => links.classList.remove('active'));
+                    let activeLink = document.querySelector('.nav-menu ul li a[href*=' + id + ']');
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            });
+        });
+
+        // 2. High-Performance Typing Effect (Fixed Bug)
+        const words = ["Omar Aissaoui", "Elektroniker", "IT-Nerd", "Python Developer"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; // Pause at full word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500; // Pause before next word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => setTimeout(type, 500));
+
+        // 3. Clean Ajax Contact Form Form Submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const inputs = this.querySelectorAll('input');
+            const button = this.querySelector('button');
+            
+            const formData = {
+                name: inputs[0].value,
+                email: inputs[1].value,
+                message: this.querySelector('textarea').value
+            };
+
+            button.disabled = true;
+            button.textContent = 'Wird gesendet...';
+
+            fetch('/send_message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    alert('Vielen Dank! Ihre Nachricht wurde erfolgreich übermittelt.');
+                    this.reset(); 
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Es gab ein Problem beim Senden an den Server.');
+            })
+            .finally(() => {
+                button.disabled = false;
+                button.textContent = 'Nachricht senden';
+            });
+        });
+    </script>
+</body>
+</html>
